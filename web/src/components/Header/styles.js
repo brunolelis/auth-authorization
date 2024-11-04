@@ -51,5 +51,10 @@ export const User = styled.div`
         > svg {
             margin-right: 5px;
         }
+
+        > span{
+          text-transform: capitalize;
+          margin-left: 4px;
+        }
     }
 `;
