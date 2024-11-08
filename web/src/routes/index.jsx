@@ -7,9 +7,16 @@ import { CustomerRoutes } from './customer.routes';
 import { AdminRoutes } from './admin.routes';
 import { SaleRoutes } from './sale.routes';
 import { AuthRoutes } from './auth.routes';
+import { useEffect } from 'react';
+import { api } from '../services/api';
 
 export function Routes() {
-  const { user } = useAuth();
+  const { user, signOut } = useAuth();
+
+  useEffect(() => {
+    api.get('/users/validated')
+      .catch(() => signOut())
+  }, [])
 
   function AccessRoute() {
     switch (user.role) {
